@@ -1,3 +1,9 @@
+# [0.2.0](https://github.com/pa-decarvalho/brigade-example-angular/compare/0.1.0...0.2.0) - 2026-11-17
+
+### 🚀 Features
+
+- a counter, with unit and end-to-end tests (#2) [_(be77d5f4)_](https://github.com/pa-decarvalho/brigade-example-angular/commit/be77d5f4b93dee55d1f327799c94522d7c99765a)
+
 # [0.1.0](https://github.com/pa-decarvalho/brigade-example-angular/releases/tag/0.1.0) - 2026-11-17
 
 ### 🚀 Features
