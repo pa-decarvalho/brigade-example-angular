@@ -1,4 +1,22 @@
-# BrigadeExampleAngular
+# brigade example: Angular
+
+An Angular app set up by [brigade](https://github.com/pa-decarvalho/brigade), to
+show it on a real project: its CI runs the lint, build and test stages (unit
+tests with Vitest, end-to-end tests with CodeceptJS in Chromium), releases with
+Releasaurus, and deploys the site to
+[GitHub Pages](https://pa-decarvalho.github.io/brigade-example-angular/).
+brigade is updated by hand, with `mise run brigade:update`.
+
+The recipe: [Angular app](https://pa-decarvalho.github.io/brigade/recipes/#angular-app).
+
+```sh
+mise install
+mise run lint
+mise run build
+mise run test
+```
+
+## Angular
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.7.
 
