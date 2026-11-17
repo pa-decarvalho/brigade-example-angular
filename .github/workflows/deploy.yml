@@ -1,0 +1,42 @@
+---
+# brigade-owned: updated by mise run brigade:update, do not edit.
+# Runs on X.Y.Z tags: mise run deploy.
+name: Deploy
+
+on:
+  push:
+    tags: ["*.*.*"]
+  # Deploy without a release, e.g. a typo in the documentation.
+  workflow_dispatch:
+
+# A new run waits for the running one: no half-done deploy.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+# No token rights by default: each job sets its own.
+permissions: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write # pages:deploy pushes the gh-pages branch
+      packages: write # docker:deploy pushes to ghcr.io
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: true # pages:deploy pushes with git
+      - name: mise run deploy # zizmor: ignore[self-repository]
+        uses: ./.brigade/ci/github/actions/deploy
+        with:
+          ansible-private-key: ${{ secrets.ANSIBLE_PRIVATE_KEY }}
+          ansible-vault-password: ${{ secrets.ANSIBLE_VAULT_PASSWORD }}
+          uv-publish-token: ${{ secrets.UV_PUBLISH_TOKEN }}
+          uv-publish-username: ${{ secrets.UV_PUBLISH_USERNAME }}
+          uv-publish-password: ${{ secrets.UV_PUBLISH_PASSWORD }}
+          npm-token: ${{ secrets.NPM_TOKEN }}
+          cargo-registry-token: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+          docker-username: ${{ secrets.DOCKER_USERNAME }}
+          docker-password: ${{ secrets.DOCKER_PASSWORD }}

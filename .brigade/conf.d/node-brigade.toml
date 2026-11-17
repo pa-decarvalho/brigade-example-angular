@@ -1,0 +1,22 @@
+[tools]
+# renovate: datasource=node-version depName=node
+node = "26.13.1"
+
+# npm installs the project's dependencies from package-lock.json (npm ci), then runs its
+# package.json scripts; a missing script does nothing (--if-present).
+
+[tasks."node:lint"]
+description = "Install the dependencies and run the lint script (ESLint...)"
+dir = "{{config_root}}/../.."
+# For linters whose config and plugins are project dependencies (ESLint).
+run = '''npm ci && npm run lint --if-present'''
+
+[tasks."node:build"]
+description = "Install the dependencies and run the build script"
+dir = "{{config_root}}/../.."
+run = '''npm ci && npm run build --if-present'''
+
+[tasks."node:test"]
+description = "Install the dependencies and run the test script"
+dir = "{{config_root}}/../.."
+run = '''npm ci && npm test --if-present'''

@@ -1,0 +1,11 @@
+[tools]
+# renovate: datasource=pypi depName=ghp-import
+"pipx:ghp-import" = { version = "2.1.0", python = "3.14" }
+
+[tasks."pages:deploy"]
+description = "Publish dist/brigade-example-angular/browser/, built by the *:build tasks, to Pages"
+dir = "{{config_root}}/../.."
+# Any build writing dist/brigade-example-angular/browser/ (the pages_dir answer: zensical:build, node:build, your own
+# task); CI deploys on a fresh runner.
+depends = [{ task = "*:build", optional = true }]
+run = '''ghp-import -n -p -f dist/brigade-example-angular/browser'''

@@ -1,0 +1,22 @@
+---
+# yamllint config: yamllint --strict -c .brigade/configs/yamllint.yml .
+# brigade-owned: updated by mise run brigade:update.
+# For your own settings, set yamllint_config to your file.
+# Paths are relative to the project root.
+extends: default
+ignore: |
+  .venv/
+  node_modules/
+  .mise-data/
+  .mise/
+  # ctt's rendered templates (the copier-template preset).
+  .ctt/
+  .brigade/copier/
+rules:
+  truthy:
+    check-keys: false
+  new-lines: disable
+  # One space before a comment, as in actions pinned by SHA:
+  # uses: x@<sha> # v1.2.3
+  comments:
+    min-spaces-from-content: 1

@@ -1,0 +1,22 @@
+# brigade-owned: updated by mise run brigade:update, do not edit.
+# mise reads only these files: brigade's in .brigade/, then the project's own
+# mise.toml and mise.local.toml (add your tasks and tools there).
+override_config_filenames = [
+    ".brigade/mise.toml",
+    ".brigade/stages.toml",
+    ".brigade/conf.d/jactionlint-brigade.toml",
+    ".brigade/conf.d/brigade-brigade.toml",
+    ".brigade/conf.d/yamllint-brigade.toml",
+    ".brigade/conf.d/gitleaks-brigade.toml",
+    ".brigade/conf.d/typos-brigade.toml",
+    ".brigade/conf.d/editorconfig-checker-brigade.toml",
+    ".brigade/conf.d/renovate-brigade.toml",
+    ".brigade/conf.d/zizmor-brigade.toml",
+    ".brigade/conf.d/node-brigade.toml",
+    ".brigade/conf.d/codeceptjs-brigade.toml",
+    ".brigade/conf.d/releasaurus-brigade.toml",
+    ".brigade/conf.d/pages-brigade.toml",
+    ".brigade/conf.d/prek-brigade.toml",
+    "mise.toml",
+    "mise.local.toml",
+]

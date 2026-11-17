@@ -1,0 +1,35 @@
+# Your answers: edit them, then run mise run brigade:update.
+build_commands: []
+build_enabled: true
+ci: "github"
+customize_tools: false
+deploy_commands: []
+deploy_enabled: true
+github_mirror: ""
+jobs: {}
+lint_commands: []
+lint_enabled: true
+npm_publish: false
+operate_commands: []
+operate_enabled: true
+operate_schedule: ""
+pages_dir: "dist/brigade-example-angular/browser"
+presets: []
+pypi_index: ""
+release_commands: []
+release_enabled: true
+test_commands: []
+test_enabled: true
+tools:
+  - "brigade"
+  - "yamllint"
+  - "gitleaks"
+  - "typos"
+  - "editorconfig-checker"
+  - "renovate"
+  - "zizmor"
+  - "node"
+  - "codeceptjs"
+  - "releasaurus"
+  - "pages"
+  - "prek"

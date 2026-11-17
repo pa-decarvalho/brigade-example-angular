@@ -1,0 +1,9 @@
+[tools]
+# renovate: datasource=pypi depName=yamllint
+"pipx:yamllint" = { version = "1.38.0", python = "3.14" }
+
+[tasks."yamllint:lint"]
+description = "Check YAML files with yamllint"
+dir = "{{config_root}}/../.."
+# Config: .brigade/configs/yamllint.yml (brigade's; yamllint_config for your own).
+run = '''yamllint --strict -c .brigade/configs/yamllint.yml .'''

@@ -1,0 +1,59 @@
+---
+# brigade-owned: updated by mise run brigade:update, do not edit.
+name: deploy
+description: mise run deploy, with the project's tools
+inputs:
+  task:
+    description: The task to run (a job of a split stage), else the stage
+    default: deploy
+  ansible-private-key:
+    description: SSH private key for Ansible (ANSIBLE_PRIVATE_KEY secret)
+    default: ""
+  ansible-vault-password:
+    description: Ansible vault password (ANSIBLE_VAULT_PASSWORD secret)
+    default: ""
+  uv-publish-token:
+    description: Index token, uv:deploy (UV_PUBLISH_TOKEN secret)
+    default: ""
+  uv-publish-username:
+    description: Index user, uv:deploy (UV_PUBLISH_USERNAME secret)
+    default: ""
+  uv-publish-password:
+    description: Index password, uv:deploy (UV_PUBLISH_PASSWORD secret)
+    default: ""
+  npm-token:
+    description: npm registry token, node:deploy (NPM_TOKEN secret)
+    default: ""
+  cargo-registry-token:
+    description: Crate registry token, rust:deploy (CARGO_REGISTRY_TOKEN secret)
+    default: ""
+  docker-username:
+    description: Registry user, docker:deploy (DOCKER_USERNAME secret)
+    default: ""
+  docker-password:
+    description: Registry password, docker:deploy (DOCKER_PASSWORD secret)
+    default: ""
+runs:
+  using: composite
+  steps:
+    # Not the mise action: no cache restored where a release is published.
+    - uses: jdx/mise-action@236a21c3b91f5db6d4e174b348674a0f0caac06d # v5.2.9
+      with:
+        version: 2026.11.9
+        cache: false
+    - shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        ANSIBLE_PRIVATE_KEY: ${{ inputs.ansible-private-key }}
+        ANSIBLE_VAULT_PASSWORD: ${{ inputs.ansible-vault-password }}
+        UV_PUBLISH_TOKEN: ${{ inputs.uv-publish-token }}
+        UV_PUBLISH_USERNAME: ${{ inputs.uv-publish-username }}
+        UV_PUBLISH_PASSWORD: ${{ inputs.uv-publish-password }}
+        NPM_TOKEN: ${{ inputs.npm-token }}
+        CARGO_REGISTRY_TOKEN: ${{ inputs.cargo-registry-token }}
+        DOCKER_USERNAME: ${{ inputs.docker-username }}
+        DOCKER_PASSWORD: ${{ inputs.docker-password }}
+        GIT_COMMITTER_NAME: ${{ github.actor }}
+        GIT_COMMITTER_EMAIL: ${{ github.actor }}@users.noreply.github.com
+        TASK: ${{ inputs.task }}
+      run: mise run "$TASK"

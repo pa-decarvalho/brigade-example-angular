@@ -1,0 +1,38 @@
+---
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 0.27.0
+_src_path: gh:pa-decarvalho/brigade
+build_commands: []
+build_enabled: true
+ci: github
+customize_tools: false
+deploy_commands: []
+deploy_enabled: true
+github_mirror: ''
+jobs: {}
+lint_commands: []
+lint_enabled: true
+npm_publish: false
+operate_commands: []
+operate_enabled: true
+operate_schedule: ''
+pages_dir: dist/brigade-example-angular/browser
+presets: []
+pypi_index: ''
+release_commands: []
+release_enabled: true
+test_commands: []
+test_enabled: true
+tools:
+- brigade
+- yamllint
+- gitleaks
+- typos
+- editorconfig-checker
+- renovate
+- zizmor
+- node
+- codeceptjs
+- releasaurus
+- pages
+- prek

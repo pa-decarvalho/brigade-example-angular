@@ -1,0 +1,42 @@
+---
+# brigade-owned: updated by mise run brigade:update, do not edit.
+name: operate
+description: mise run operate (e.g. Renovate), with the project's tools
+inputs:
+  task:
+    description: The task to run (a job of a split stage), else the stage
+    default: operate
+  renovate-token:
+    description: Renovate's token (RENOVATE_TOKEN secret)
+    default: ""
+  ansible-private-key:
+    description: SSH private key for Ansible (ANSIBLE_PRIVATE_KEY secret)
+    default: ""
+  ansible-vault-password:
+    description: Ansible vault password (ANSIBLE_VAULT_PASSWORD secret)
+    default: ""
+runs:
+  using: composite
+  steps:
+    - uses: ./.brigade/ci/github/actions/mise # zizmor: ignore[self-repository]
+    # Renovate's git author: the token owner's noreply address. Without it,
+    # Renovate needs the token to read the owner's emails, else it commits as
+    # a Mend account (and warns). zizmor: the token owner's own name.
+    - if: inputs.renovate-token != ''
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.renovate-token }}
+      run: >- # zizmor: ignore[github-env]
+        gh api user --jq '"RENOVATE_GIT_AUTHOR=\(.name // .login)
+        <\(.id)+\(.login)@users.noreply.github.com>"' >> "$GITHUB_ENV"
+    - shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+        RENOVATE_PLATFORM: github
+        RENOVATE_REPOSITORIES: ${{ github.repository }}
+        RENOVATE_TOKEN: ${{ inputs.renovate-token }}
+        RENOVATE_ONBOARDING: "false"
+        ANSIBLE_PRIVATE_KEY: ${{ inputs.ansible-private-key }}
+        ANSIBLE_VAULT_PASSWORD: ${{ inputs.ansible-vault-password }}
+        TASK: ${{ inputs.task }}
+      run: mise run "$TASK"
