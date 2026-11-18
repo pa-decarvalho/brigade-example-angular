@@ -40,10 +40,14 @@ releasaurus_version: ""
 releasaurus_workflow: "direct"
 release_commands: []
 release_enabled: true
+renovate_automerge: true
 renovate_cli_version: ""
+renovate_config: ""
 renovate_lint_command: ""
 renovate_node_version: ""
 renovate_operate_command: ""
+renovate_updates:
+  - "brigade"
 renovate_version: ""
 test_commands: []
 test_enabled: true

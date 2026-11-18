@@ -1,6 +1,6 @@
 ---
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 0.28.2
+_commit: 0.30.0
 _src_path: gh:pa-decarvalho/brigade
 brigade_lint_command: ''
 brigade_version: ''
@@ -43,10 +43,14 @@ releasaurus_version: ''
 releasaurus_workflow: direct
 release_commands: []
 release_enabled: true
+renovate_automerge: true
 renovate_cli_version: ''
+renovate_config: ''
 renovate_lint_command: ''
 renovate_node_version: ''
 renovate_operate_command: ''
+renovate_updates:
+- brigade
 renovate_version: ''
 test_commands: []
 test_enabled: true
