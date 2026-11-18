@@ -1,3 +1,9 @@
+# [0.3.0](https://github.com/pa-decarvalho/brigade-example-angular/compare/0.2.0...0.3.0) - 2026-11-18
+
+### 🚀 Features
+
+- direct releases and Renovate automerge, with brigade 0.28.1 [_(67cb7d22)_](https://github.com/pa-decarvalho/brigade-example-angular/commit/67cb7d228021012b57c8831b7b0c9a51a8b2b947)
+
 # [0.2.0](https://github.com/pa-decarvalho/brigade-example-angular/compare/0.1.0...0.2.0) - 2026-11-17
 
 ### 🚀 Features
