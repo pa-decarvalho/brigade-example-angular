@@ -1,6 +1,6 @@
 ---
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 0.30.0
+_commit: 0.31.0
 _src_path: gh:pa-decarvalho/brigade
 brigade_lint_command: ''
 brigade_version: ''
@@ -14,6 +14,8 @@ deploy_enabled: true
 editorconfig_checker_config: ''
 editorconfig_checker_lint_command: ''
 editorconfig_checker_version: ''
+gh_check_command: ''
+gh_version: ''
 github_mirror: ''
 gitleaks_lint_command: ''
 gitleaks_version: ''
@@ -66,6 +68,7 @@ tools:
 - codeceptjs
 - releasaurus
 - pages
+- gh
 - prek
 typos_config: ''
 typos_lint_command: ''
