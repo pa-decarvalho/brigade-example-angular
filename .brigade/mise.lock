@@ -264,6 +264,16 @@ url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-darwin-x64.tar.gz"
 checksum = "sha256:e2edda75bfb089654705cf65a13b58933bfd5f57148e8ebda916f58a2474f1f7"
 url = "https://nodejs.org/dist/v26.13.1/node-v26.13.1-win-x64.zip"
 
+[[tools."npm:renovate"]]
+version = "44.252.0"
+aube = { path = ".mise/locks/npm-renovate/44.252.0~026f02c4", digest = "sha256:101946ab88dfb47ccb954bf56eb1e2d2a72783447f4b21c6f313738cbd639837" }
+backend = "npm:renovate"
+specifiers = ["44.252.0"]
+
+[tools."npm:renovate".options]
+allow_builds = '["re2"]'
+trust_policy_excludes = '["@yarnpkg/libzip@3.2.2"]'
+
 [[tools."pipx:check-jsonschema"]]
 version = "0.39.0"
 backend = "pipx:check-jsonschema"
