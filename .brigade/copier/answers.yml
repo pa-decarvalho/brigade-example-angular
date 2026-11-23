@@ -1,6 +1,6 @@
 ---
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 0.33.0
+_commit: 0.40.1
 _src_path: gh:pa-decarvalho/brigade
 brigade_lint_command: ''
 brigade_version: ''
@@ -9,11 +9,13 @@ build_enabled: true
 ci: github
 codeceptjs_test_command: ''
 customize_tools: true
+deploy_auto: true
 deploy_commands: []
 deploy_enabled: true
 editorconfig_checker_config: ''
 editorconfig_checker_lint_command: ''
 editorconfig_checker_version: ''
+environments: []
 gh_check_command: ''
 gh_setup_command: ''
 gh_version: ''
@@ -38,6 +40,8 @@ prek_install_command: ''
 prek_run_command: ''
 prek_version: ''
 presets: []
+publish_commands: []
+publish_enabled: true
 pypi_index: ''
 releasaurus_config: ''
 releasaurus_release_command: ''
